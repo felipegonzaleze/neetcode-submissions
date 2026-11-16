@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        Map<Character, Integer> countS = new HashMap<>();
+        Map<Character, Integer> countT = new HashMap<>();
+
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            countS.put(s.charAt(i), countS.getOrDefault(s.charAt(i), 0) + 1);
+            countT.put(t.charAt(i), countT.getOrDefault(t.charAt(i), 0) + 1);
+        }
+
+        for (Character key : countS.keySet()) {
+            if (!countS.get(key).equals(countT.getOrDefault(key, 0))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
